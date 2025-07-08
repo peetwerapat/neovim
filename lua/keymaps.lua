@@ -6,8 +6,6 @@ vim.keymap.set("i", "<C-h>", "<Left>", opts)
 vim.keymap.set("i", "<C-j>", "<Down>", opts)
 vim.keymap.set("i", "<C-k>", "<Up>", opts)
 vim.keymap.set("i", "<C-l>", "<Right>", opts)
-vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv", opts)
-vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv", opts)
 
 vim.keymap.set("n", "<leader>w", function()
 	vim.cmd("w")
@@ -24,3 +22,8 @@ vim.keymap.set("n", "<leader>ff", require("fzf-lua").files, {
 
 vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle terminal" })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], opts)
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set({ "n", "v" }, "H", "0", opts)
+vim.keymap.set({ "n", "v" }, "L", "$", opts)
