@@ -1,3 +1,18 @@
+local plugin_dir = vim.fn.stdpath("data") .. "/lazy"
+local lazypath = plugin_dir .. "/lazy.nvim"
+
+if not vim.uv.fs_stat(lazypath) then
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+
 local plugin_specs = {
   {
     "gbprod/yanky.nvim",
@@ -186,17 +201,15 @@ local plugin_specs = {
   },
 }
 
-
-local lazypath = vim.fn.stdpath("config") .. "/lua/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  error("lazy.nvim not found at: " .. lazypath)
-end
-vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup({
   spec = plugin_specs,
   ui = {
     border = "rounded",
-    title = "Minimal Dev Setup",
+    title = "Plugin Manager",
+    title_pos = "center",
+  },
+  rocks = {
+    enabled = false,
+    hererocks = false,
   },
 })
