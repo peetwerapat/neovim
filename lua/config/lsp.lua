@@ -45,6 +45,16 @@ local function on_attach(client, bufnr)
   map("n", "<space>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, { desc = "List workspace folders" })
+  map("n", "<leader>D", function()
+    vim.diagnostic.open_float(nil, {
+      focusable = false,
+      close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+      border = "rounded",
+      source = "always",
+      prefix = "",
+      scope = "cursor",
+    })
+  end, { desc = "Show diagnostics popup" })
 
   if client.server_capabilities.documentHighlightProvider then
     local group = vim.api.nvim_create_augroup("lsp_document_highlight", { clear = true })
