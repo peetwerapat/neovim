@@ -168,10 +168,19 @@ local plugin_specs = {
     config = true,
   },
 
+  -- For JSX-aware comment support
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
+  },
+
   -- Comments
   {
     "numToStr/Comment.nvim",
-    config = true,
+    config = function()
+      require("config.comment")
+    end,
   },
 
   -- Icons
