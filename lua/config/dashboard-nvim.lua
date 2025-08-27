@@ -3,7 +3,14 @@ local keymap = vim.keymap
 local dashboard = require("dashboard")
 
 local conf = {}
+
+-- Header "" Default Top, Bottom 2 line
 conf.header = {
+  "                                                       ",
+  "                                                       ",
+  "                                                       ",
+  "                                                       ",
+  "                                                       ",
   "                                                       ",
   "                                                       ",
   "                                                       ",
@@ -15,9 +22,20 @@ conf.header = {
   "   ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝    ╚═╝     ╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝    ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝",
   "                                                       ",
   "                                                       ",
-  -- "                                                       ",
-  -- "                                                       ",
+  --[[ "                                                       ", ]]
+  --[[ "                                                       ", ]]
+  --[[ "                                                       ", ]]
+  --[[ "                                                       ", ]]
+  --[[ "                                                       ", ]]
+  --[[ "                                                       ", ]]
 }
+
+local today = os.date("%A, %d %B %Y")
+
+table.insert(conf.header, "")
+table.insert(conf.header, "📅 " .. today)
+table.insert(conf.header, "")
+table.insert(conf.header, "")
 
 -- conf.header = {
 --   "                                                ",
@@ -70,7 +88,6 @@ conf.center = {
   {
     icon = "󰗼  ",
     desc = "Quit Nvim                               ",
-    -- desc = "Quit Nvim                               ",
     action = "qa",
     key = "q",
   },
@@ -82,27 +99,27 @@ conf.footer = {
   "Business | Trade | Develop",
 }
 
--- local stats = require("lazy").stats()
--- local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
+--[[ local stats = require("lazy").stats() ]]
+--[[ local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100) ]]
 
 dashboard.setup {
-  theme = "hyper",
-  -- shortcut_type = "number",
+  --[[ theme = "hyper", ]]
+  theme = "doom",
+
   config = {
     shortcut = {
-      -- {
-      --   desc =  "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms",
-      --   group = "DashboardShortcutDesc",
-      -- },
+      --[[ desc = "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms", ]]
+      --[[ group = "DashboardShortcutDesc", ]]
     },
-    shortcut_type = "letter",
+    --[[ shortcut_type = "letter", ]]
+    shortcut_type = "number",
     header = conf.header,
-    -- center = conf.center,
+    center = conf.center,
     footer = conf.footer,
     packages = { enable = false },
-    -- week_header = {
-    --   enable = true,
-    -- },
+    --[[ week_header = { ]]
+    --[[   enable = true, ]]
+    --[[ }, ]]
   },
 }
 

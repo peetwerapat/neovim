@@ -200,14 +200,23 @@ local plugin_specs = {
     end,
   },
 
-  -- Which-key
+  -- Git
   {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
-      require("config.which-key")
+      require("config.gitsigns")
     end,
-  },
+  }
+
+  -- Which-key
+  --[[ { ]]
+  --[[   "folke/which-key.nvim", ]]
+  --[[   event = "VeryLazy", ]]
+  --[[   config = function() ]]
+  --[[     require("config.which-key") ]]
+  --[[   end, ]]
+  --[[ }, ]]
 }
 
 require("lazy").setup({

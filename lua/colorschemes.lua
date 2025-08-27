@@ -94,6 +94,7 @@ M.colorscheme_conf = {
       ctermfg = 59,
       ctermbg = 41,
     })
+
     vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#1e90ff", bold = true })
     vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#ffcba4", italic = true })
   end,
